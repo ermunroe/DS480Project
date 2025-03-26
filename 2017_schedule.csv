@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 season,series_id,race_num,race_date,race_id_short,race_track_name,track_id,race_car_count,race_winner_name,race_winner_real_id,race_winner_starting_pos,race_winner_make,race_lap_len,race_track_surface,race_miles_completed,race_purse_completed,race_pole_time,race_cautions,race_speed,race_lead_changes,race_url,race_track_url,race_winner_url
+=======
+season,series_id,race_num,race_date,race_short_id,race_track_name,race_track_id,race_car_count,race_winner_name,race_winner_real_id,race_winner_starting_pos,race_winner_make,race_lap_len,race_track_surface,race_miles_completed,race_purse_completed,race_pole_time,race_cautions,race_speed,race_lead_changes,race_url,race_track_url,race_winner_url
+>>>>>>> a710de4cd840b20e2370692b0a6686f85f009272
 2017,W,1,02/26/17,2017_01,Daytona,Daytona_International_Speedway,40,Kurt Busch,buschku01,8,Ford ,2.500,P,500,,192.872,8,143.187,37,https://www.racing-reference.info/race-results/2017_Daytona_500/W, https://www.racing-reference.info/tracks/Daytona_International_Speedway,https://www.racing-reference.info/driver/buschku01/
 2017,W,2,03/05/17,2017_02,Atlanta,Atlanta_Motor_Speedway,39,Brad Keselowski,keselbr01,5,Ford ,1.540,P,501,,190.398,6,140.898,9,https://www.racing-reference.info/race-results/2017_Folds_of_Honor_QuikTrip_500/W, https://www.racing-reference.info/tracks/Atlanta_Motor_Speedway,https://www.racing-reference.info/driver/keselbr01/
 2017,W,3,03/12/17,2017_03,Las Vegas,Las_Vegas_Motor_Speedway,39,"Martin Truex, Jr.",truexma02,2,Toyota ,1.500,P,401,,193.680,6,136.032,14,https://www.racing-reference.info/race-results/2017_Kobalt_400/W, https://www.racing-reference.info/tracks/Las_Vegas_Motor_Speedway,https://www.racing-reference.info/driver/truexma02/
