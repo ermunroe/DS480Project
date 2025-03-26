@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 season,series_id,race_num,race_date,race_id_short,race_track_name,track_name,race_car_count,race_winner_name,race_winner_real_id,race_winner_starting_pos,race_winner_make,race_lap_len,race_track_surface,race_miles_completed,race_purse_completed,race_pole_time,race_cautions,race_speed,race_lead_changes,race_url,race_track_url,race_winner_url
-=======
-season,series_id,race_num,race_date,race_short_id,race_track_name,race_track_id,race_car_count,race_winner_name,race_winner_real_id,race_winner_starting_pos,race_winner_make,race_lap_len,race_track_surface,race_miles_completed,race_purse_completed,race_pole_time,race_cautions,race_speed,race_lead_changes,race_url,race_track_url,race_winner_url
->>>>>>> a710de4cd840b20e2370692b0a6686f85f009272
 2018,W,1,02/18/18,2018_01,Daytona,Daytona_International_Speedway,40,Austin Dillon,dilloau01,14,Chevrolet ,2.500,P,518,,195.644,8,150.545,24,https://www.racing-reference.info/race-results/2018_Daytona_500/W, https://www.racing-reference.info/tracks/Daytona_International_Speedway,https://www.racing-reference.info/driver/dilloau01/
 2018,W,2,02/25/18,2018_02,Atlanta,Atlanta_Motor_Speedway,36,Kevin Harvick,harvike01,3,Ford ,1.540,P,501,,184.652,5,143.068,24,https://www.racing-reference.info/race-results/2018_Folds_of_Honor_QuikTrip_500/W, https://www.racing-reference.info/tracks/Atlanta_Motor_Speedway,https://www.racing-reference.info/driver/harvike01/
 2018,W,3,03/04/18,2018_03,Las Vegas,Las_Vegas_Motor_Speedway,37,Kevin Harvick,harvike01,2,Ford ,1.500,P,401,,191.489,4,141.756,11,https://www.racing-reference.info/race-results/2018_Pennzoil_400_presented_by_Jiffy_Lube/W, https://www.racing-reference.info/tracks/Las_Vegas_Motor_Speedway,https://www.racing-reference.info/driver/harvike01/
