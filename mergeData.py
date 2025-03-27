@@ -275,3 +275,9 @@ merged2024 = pd.merge(Results2024, Schedule2024, on='race_id_short', how='inner'
 final2024 = merged2024.merge(Info2024Filtered, on='race_id', how="inner")
 
 final2024.to_csv('2024_merged.csv', index=False)
+
+
+
+#Merge all the data together
+
+merged_all = pd.concat([merged2014, merged2015, merged2016, merged2017, final2018, final2019, final2020, final2021, final2022, final2023, final2024], ignore_index=True)
