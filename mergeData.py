@@ -47,7 +47,6 @@ merged2017.to_csv('2017_merged.csv', index=False)
 #2018
 #Load the data
 
-##Missing 30, 24, 25, 19, 16, 17, 7, 4####
 
 Results2018 = pd.read_csv('2018_race_results.csv')
 Schedule2018 = pd.read_csv('2018_schedule.csv')
@@ -81,7 +80,6 @@ final2018.to_csv('2018_merged.csv', index=False)
 
 # 2019
 
-### Missing 4, 7, 16, 19, 21, 24, 25, 26###
 
 # Load the data
 Results2019 = pd.read_csv('2019_race_results.csv')
@@ -116,9 +114,6 @@ final2019.to_csv('2019_merged.csv', index=False)
 
 # 2020
 
-### Missing 4, 11, 14, 16, 18, 19, 23, 24, 25, 
-
-
 # Load the data
 Results2020 = pd.read_csv('2020_race_results.csv')
 Schedule2020 = pd.read_csv('2020_schedule.csv')
@@ -148,8 +143,6 @@ final2020 = merged2020.merge(Info2020Filtered, on='race_id', how="inner")
 final2020.to_csv('2020_merged.csv', index=False)
 
 # 2021
-
-### Missing 24, 28, 29, 33, 36 ###
 
 # Load the data
 Results2021 = pd.read_csv('2021_race_results.csv')
@@ -181,8 +174,6 @@ final2021.to_csv('2021_merged.csv', index=False)
 
 # 2022
 
-## Missing 3, 6, 8, 11, 13, 15, 16, 18, 21, 28, 29, 30, 36 ##
-
 # Load the data
 Results2022 = pd.read_csv('2022_race_results.csv')
 Schedule2022 = pd.read_csv('2022_schedule.csv')
@@ -212,8 +203,6 @@ final2022 = merged2022.merge(Info2022Filtered, on='race_id', how="inner")
 final2022.to_csv('2022_merged.csv', index=False)
 
 # 2023
-
-## Missing 3, 11, 12, 15, 16, 21, 30, 34, 36 ##
 
 # Load the data
 Results2023 = pd.read_csv('2023_race_results.csv')
