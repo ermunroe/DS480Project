@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from collections import Counter
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.impute import SimpleImputer
+import tensorflow as tf
 
 
 df = pd.read_csv('finalData.csv')
@@ -61,4 +62,11 @@ smote = SMOTE(random_state=42)
 X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
 
 
+# Number of Nodes to have in the network
+print(X_imputed.shape[1])
+
+
+# Initialize the Neural Network
+model1 = tf.Sequential()
+#model1.add(tf.Dense())
 
