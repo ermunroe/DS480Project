@@ -71,7 +71,7 @@ from sklearn.preprocessing import StandardScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
+from scikeras.wrappers import KerasClassifier, KerasRegressor
 from sklearn.model_selection import GridSearchCV
 
 
