@@ -36,6 +36,9 @@ df_filtered['winner'] = df_filtered['finish_position'].apply(lambda x: 1 if x ==
 
 #Filter out NTT, DFP, and MQ from 'race_pole_time' column
 df_filtered['race_pole_time'] = df_filtered['race_pole_time'].replace(['NTT', 'DFP', 'MQ'], np.nan)
+print(df_filtered)
+df_filtered = df_filtered.dropna(subset='race_pole_time')
+print(df_filtered)
 
 # Define the X and y variables
 X_target = df_filtered[targetVariables]
@@ -60,14 +63,16 @@ X_discrete = scaler.fit_transform(X_discrete)
 
 # Combine the categorical, continuous, and discrete variables into a single DataFrame
 X_stacked = np.concatenate((X_categorical, X_continuous, X_discrete), axis=1)
-X_stacked = pd.DataFrame(X_stacked)
+X_stacked = np.array(X_stacked)
 
-# Handle missing values
-imputer = SimpleImputer(strategy="mean")
-X_imputed = imputer.fit_transform(X_stacked)
 
+print(X_stacked.shape, y.shape)
+#df_stacked = X_stacked.dropna()
+#print(df_stacked.shape, y.shape)
+
+###
 # Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X_imputed, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X_stacked, y, test_size=0.2, random_state=42)
 
 # Use SMOTE to handle class imbalance in the training set
 smote = SMOTE(random_state=42)
@@ -75,7 +80,7 @@ X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
 
 
 # Number of Nodes to have in the network
-print(X_imputed.shape[1])
+print(X_stacked.shape[1])
 #591 with these specific features
 
 from sklearn.model_selection import KFold
@@ -91,7 +96,7 @@ from tensorflow.python.keras.losses import categorical_crossentropy
 #Define the model
 def create_model(learningRate = 0.01, numHiddenLayers = 1):
     model = sequential()
-    model.add(Dense(64, input_dim = 591, activation = 'relu'))
+    model.add(Dense(64, input_dim = 478, activation = 'relu'))
     for _ in range(numHiddenLayers):
         model.add(Dense(64, activation = 'relu'))
     model.add(Dense(1, activation = 'softmax'))
@@ -106,9 +111,8 @@ paramGrid = {
     'numHiddenLayers' : [1, 2, 3] 
 }
 
-print(X_train_resampled.shape, y.shape)
+print(X_train_resampled.shape, y_train_resampled.shape)
 
 kf = KFold(n_splits=5, shuffle=True, random_state=42)
 grid = GridSearchCV(estimator=model, param_grid=paramGrid, cv=kf)
 grid_result = grid.fit(X_train_resampled, y_train_resampled)
-
