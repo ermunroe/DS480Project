@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from collections import Counter
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.impute import SimpleImputer
-import tensorflow as tf
+
 
 
 df = pd.read_csv('finalData.csv')
@@ -64,9 +64,13 @@ X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
 
 # Number of Nodes to have in the network
 print(X_imputed.shape[1])
+#3119 with these specific features
 
-
-# Initialize the Neural Network
-model1 = tf.Sequential()
-#model1.add(tf.Dense())
+from sklearn.model_selection import KFold
+from sklearn.preprocessing import StandardScaler
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.optimizers import Adam
+#from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
+from sklearn.model_selection import GridSearchCV
 
