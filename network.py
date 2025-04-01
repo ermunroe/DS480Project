@@ -13,6 +13,16 @@ df = pd.read_csv('finalData.csv')
 #Filter out data from 2014-2017 since the data is not complete for those years
 df_filtered = df[(df['season_x'] > 2017)]
 
+#Filter by the 10 drivers to include in the network
+drivers_to_include = [
+    "Joey_Logano", "Denny_Hamlin", "Kyle_Busch", "Martin_Truex_Jr",
+    "Brad_Keselowski", "Kyle_Larson", "Ryan_Blaney", "William_Byron",
+    "Christopher_Bell", "Tyler_Reddick"
+]
+
+df_filtered = df_filtered[df_filtered['driver_id'].isin(drivers_to_include)]
+
+#print(df_filtered)
 
 # Target Variables to include in the model
 targetVariables = ['race_lap_len', 'race_track_surface', 'race_track_name', 
@@ -30,6 +40,8 @@ df_filtered['race_pole_time'] = df_filtered['race_pole_time'].replace(['NTT', 'D
 # Define the X and y variables
 X_target = df_filtered[targetVariables]
 y = df_filtered['winner']
+
+print(X_target.shape, y.shape)
 
 
 # Categorical variables to include in the model
@@ -64,15 +76,39 @@ X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
 
 # Number of Nodes to have in the network
 print(X_imputed.shape[1])
-#3119 with these specific features
+#591 with these specific features
 
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import StandardScaler
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
-from tensorflow.keras.optimizers import Adam
+from tensorflow.python.keras import backend
+from tensorflow.python.keras.engine import sequential
+from tensorflow.python.keras.layers import Dense
 from scikeras.wrappers import KerasClassifier, KerasRegressor
 from sklearn.model_selection import GridSearchCV
-#Changes made
+from tensorflow.python.keras.optimizer_v2 import adam as adam_v2
+from tensorflow.python.keras.losses import categorical_crossentropy
 
+#Define the model
+def create_model(learningRate = 0.01, numHiddenLayers = 1):
+    model = sequential()
+    model.add(Dense(64, input_dim = 591, activation = 'relu'))
+    for _ in range(numHiddenLayers):
+        model.add(Dense(64, activation = 'relu'))
+    model.add(Dense(1, activation = 'softmax'))
+    model.compile(loss = categorical_crossentropy, optimizer = adam_v2, metrics = 'accuracy')
+    return model
+
+model = KerasClassifier(build_fn = create_model, verbose=0)
+
+paramGrid = {
+    'learningRate' : [0.01, 0.05, 0.1],
+    'epochs' : [50, 100, 150],
+    'numHiddenLayers' : [1, 2, 3] 
+}
+
+print(X_train_resampled.shape, y.shape)
+
+kf = KFold(n_splits=5, shuffle=True, random_state=42)
+grid = GridSearchCV(estimator=model, param_grid=paramGrid, cv=kf)
+grid_result = grid.fit(X_train_resampled, y_train_resampled)
 
